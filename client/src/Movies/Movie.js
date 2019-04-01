@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import MovieCard from './MovieCard'
+
 export default class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movie: null,
-      idCheck: props.match.param.id
+      idCheck: props.match.params.id
     };
   }
 
   componentDidMount() {
     // change this line to grab the id passed on the URL
-    const id = this.state.movie.find( event => {
-      // use the parameter from the Route and the id from the data
-      return `${event.id}` === this.state.idCheck;
-    });
+    const id = this.state.idCheck
+    
+    // const id = 1;
     this.fetchMovie(id);
   }
 
@@ -46,25 +47,9 @@ export default class Movie extends Component {
       return <div>Loading movie information...</div>;
     }
 
-    const { title, director, metascore, stars } = this.state.movie;
     return (
-      <div className="save-wrapper">
-        <div className="movie-card">
-          <h2>{title}</h2>
-          <div className="movie-director">
-            Director: <em>{director}</em>
-          </div>
-          <div className="movie-metascore">
-            Metascore: <strong>{metascore}</strong>
-          </div>
-          <h3>Actors</h3>
-
-          {stars.map(star => (
-            <div key={star} className="movie-star">
-              {star}
-            </div>
-          ))}
-        </div>
+      <div>
+        <MovieCard key={this.state.movie.id} movie={this.state.movie} />
         <div className="save-button">Save</div>
       </div>
     );

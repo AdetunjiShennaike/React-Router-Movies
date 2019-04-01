@@ -25,9 +25,9 @@ export default class App extends Component {
       <div>
         <SavedList list={this.state.savedList} />
         <div>
-          <Route exact path='/' Component={ MovieList } />
+          <Route exact path='/' component={ MovieList } />
           {/* use :(name) to pass a dynamic id */}
-          <Route path='/movie/:id' Component={ Movie } />
+          <Route path='/movie/:id' component={ Movie } />
         </div>
       </div>
     );
