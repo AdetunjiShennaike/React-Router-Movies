@@ -28,6 +28,7 @@ export default class App extends Component {
           <Route exact path='/' component={ MovieList } />
           {/* use :(name) to pass a dynamic id */}
           <Route path='/movie/:id' component={ Movie } />
+          
         </div>
       </div>
     );
