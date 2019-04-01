@@ -5,13 +5,17 @@ export default class Movie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: null
+      movie: null,
+      idCheck: props.match.param.id
     };
   }
 
   componentDidMount() {
     // change this line to grab the id passed on the URL
-    const id = 1;
+    const id = this.state.movie.find( event => {
+      // use the parameter from the Route and the id from the data
+      return `${event.id}` === this.state.idCheck;
+    });
     this.fetchMovie(id);
   }
 
